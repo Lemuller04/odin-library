@@ -1,3 +1,7 @@
+:root {
+    --hd-and-ft-background: #3d4766;
+}
+
 *,
 *::before,
 *::after {
@@ -7,5 +11,32 @@
 }
 
 body {
-    background-color: #333;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #fff0bf;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    text-align: center;
+}
+
+main {
+    flex: 1;
+}
+
+header,
+footer {
+    background-color: var(--hd-and-ft-background);
+    color: #fff;
+}
+
+header {
+    padding: 1rem;
+}
+
+footer {
+    padding: .5rem;
+}
+
+a {
+    color: #fff;
 }
