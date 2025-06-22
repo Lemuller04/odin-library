@@ -114,11 +114,10 @@ function capitalize(word) {
   return word.charAt(0).toUpperCase() + word.slice(1);
 }
 
-addBookToLibrary("Book 1", "Author 1", 1991, true);
-addBookToLibrary("Book 2", "Author 2", 1992, true);
-addBookToLibrary("Book 3", "Author 3", 1993);
-addBookToLibrary("Book 4", "Author 4", 1994);
-addBookToLibrary("Book 5", "Author 5", 1995);
+addBookToLibrary("O Cortiço", "Aluísio Azevedo", 1890, true);
+addBookToLibrary("Thiking Fast and Slow", "Daniel Kahneman", 2011, true);
+addBookToLibrary("The C Programming Language", "Kernighan & Ritchie", 1978);
+addBookToLibrary("O Idiota", "Fiódor Dostoiévski", 1869);
 
 listBooks();
 

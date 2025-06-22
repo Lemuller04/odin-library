@@ -150,3 +150,7 @@ input[type="checkbox"] {
     align-items: center;
     gap: 20px;
 }
+
+input[name="readNew"] {
+    margin-top: 9px;
+}
