@@ -39,7 +39,8 @@ table td {
     font-size: 1.3rem;
 }
 
-table * {
+td,
+th {
     border-bottom: 4px solid #888;
     padding: .5rem 1rem;
 }
@@ -54,12 +55,19 @@ button {
     font-size: .9rem;
 }
 
-.remove {
+button:hover {
+    cursor: pointer;
+}
+
+td button {
     background-color: #7999f7;
     font-weight: 700;
     color: #fff;
-    border-bottom: 4px solid #fff5d4;
     border-radius: 8px;
+}
+
+td:has(button) {
+    border: none;
 }
 
 header,
@@ -78,4 +86,27 @@ footer {
 
 a {
     color: #fff;
+}
+
+.modal {
+    justify-self: center;
+    align-self: center;
+    padding: .5rem;
+}
+
+dialog::backdrop {
+    background-color: rgba(0 0 0 / .5);
+}
+
+form input {
+    width: 100%;
+}
+
+form p label {
+    display: block;
+    text-align: start;
+}
+
+.close {
+    background-color: #eb6157;
 }
