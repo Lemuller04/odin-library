@@ -31,15 +31,16 @@
                     </p>
                     <p>
                         <label for="date">Year</label>
-                        <input type="text" id="date" name="date">
+                        <input type="number" id="date" name="date">
                     </p>
                     <div>
                         <label for="read">Already read</label>
                         <input type="checkbox" id="read" name="read">
                     </div>
                 </fieldset>
-                <button data-close-modal class="close">Cancel</button>
-                <button type="button" class="add-book">Add book</button>
+                <button data-close-modal class="close" type="button">Cancel</button>
+                <button type="reset">Clear form</button>
+                <button type="submit" class="add-book">Add book</button>
             </form>
         </dialog>
     </main>

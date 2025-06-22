@@ -21,9 +21,11 @@ body {
 }
 
 main {
+    margin-top: 100px;
     flex: 1;
     display: grid;
-    place-content: center;
+    justify-content: center;
+    align-content: start;
     gap: 15px;
 }
 
@@ -92,19 +94,49 @@ a {
     justify-self: center;
     align-self: center;
     padding: .5rem;
+    border: 3px solid #333;
+    border-radius: 25px;
+    width: clamp(400px, 800px, 70%);
 }
 
 dialog::backdrop {
     background-color: rgba(0 0 0 / .5);
 }
 
-form input {
+form {
+    margin: 10px 20px;
+}
+
+form input[type="text"],
+form input[type="number"] {
     width: 100%;
+    padding: 10px 25px;
+    font-size: inherit;
+    margin-bottom: 20px;
 }
 
 form p label {
     display: block;
     text-align: start;
+}
+
+fieldset {
+    padding: 10px 20px 0 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    font-size: 1.3rem;
+}
+
+form div {
+    display: grid;
+    grid-template: auto / auto auto;
+    place-content: center;
+    margin-bottom: 10px;
+    gap: 20px;
+}
+
+input[type="checkbox"] {
+    transform: scale(2);
 }
 
 .close {

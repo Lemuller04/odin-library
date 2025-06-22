@@ -80,7 +80,7 @@ listBooks();
 const openModal = document.querySelector("[data-open-modal]");
 const closeModal = document.querySelector("[data-close-modal]");
 const modal = document.querySelector("[data-model]");
-const addBookButton = document.querySelector(".add-book");
+const form = document.querySelector("form");
 let removeBookButtons = document.querySelectorAll(".remove");
 
 openModal.addEventListener("click", () => {
@@ -104,9 +104,15 @@ modal.addEventListener("click", (e) => {
   }
 });
 
-addBookButton.addEventListener("click", () => {
-  modal.close();
-  alert("hi");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let title = document.querySelector("input[name=title]").value;
+  let author = document.querySelector("input[name=author]").value;
+  let year = document.querySelector("input[name=date]").value;
+  let read = document.querySelector("input[type=checkbox]").checked;
+
+  author = author.length < 1 ? "unknown" : author;
+  year = year.length < 1 ? "unknown" : year;
 });
 
 removeBookButtons.forEach(
