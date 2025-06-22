@@ -137,8 +137,16 @@ form div {
 
 input[type="checkbox"] {
     transform: scale(2);
+    height: 13px;
 }
 
 .close {
     background-color: #eb6157;
+}
+
+.containsCheckbox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
 }

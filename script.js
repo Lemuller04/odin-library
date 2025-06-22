@@ -5,6 +5,7 @@ function Book(title, author, year, read) {
   this.author = author;
   this.year = year;
   this.read = read ? "Read" : "Not Read";
+  console.log(this.read);
   this.id = crypto.randomUUID();
 }
 
@@ -45,6 +46,12 @@ function listBooks() {
     keys.forEach((key) => {
       const td = document.createElement("td");
       td.textContent = book[key];
+
+      if (key === "read") {
+        addCheckbox(td, book[key], book);
+        td.classList.add("containsCheckbox");
+      }
+
       tr.appendChild(td);
     });
 
@@ -72,6 +79,21 @@ function listBooks() {
   removeBookButtons.forEach((button) => (button.onclick = () => {}));
 
   main.appendChild(table);
+}
+
+function addCheckbox(td, read, book) {
+  const cb = document.createElement("input");
+  cb.type = "checkbox";
+  cb.name = "read";
+  cb.checked = read === "Read";
+
+  cb.addEventListener("change", () => {
+    const index = myLibrary.indexOf(book);
+    book["read"] = cb.checked ? "Read" : "Not Read";
+    listBooks();
+  });
+
+  td.appendChild(cb);
 }
 
 // Defines the table header based on the keys of the Book object
@@ -132,11 +154,12 @@ form.addEventListener("submit", (e) => {
   let title = document.querySelector("input[name=title]").value;
   let author = document.querySelector("input[name=author]").value;
   let year = document.querySelector("input[name=date]").value;
-  let read = document.querySelector("input[type=checkbox]").checked;
+  let read = document.querySelector("input[name=readNew]").checked;
 
   author = author.length < 1 ? "unknown" : author;
   year = year.length < 1 ? "unknown" : year;
 
+  console.log(read);
   addBookToLibrary(title, author, year, read);
   listBooks();
   modal.close();
