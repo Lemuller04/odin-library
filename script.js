@@ -5,7 +5,6 @@ function Book(title, author, year, read) {
   this.author = author;
   this.year = year;
   this.read = read ? "Read" : "Not Read";
-  console.log(this.read);
   this.id = crypto.randomUUID();
 }
 
@@ -36,19 +35,22 @@ function listBooks() {
     return;
   }
 
+  // Populates the head of the table without including the book id
   let keys = Object.keys(myLibrary[0]);
   keys.pop();
   addTableHeader(thead, keys);
 
+  // Each iteraction creates a table row
   myLibrary.forEach((book) => {
     const tr = document.createElement("tr");
 
+    // Each iteraction creates a table data
     keys.forEach((key) => {
       tr.appendChild(populateRow(book, key));
     });
 
     const td = document.createElement("td");
-    td.appendChild(createRemoveButtons(book));
+    td.appendChild(createRemoveButton(book));
     tr.appendChild(td);
     tbody.appendChild(tr);
   });
@@ -59,7 +61,7 @@ function listBooks() {
   main.appendChild(table);
 }
 
-function createRemoveButtons(book) {
+function createRemoveButton(book) {
   const removeButton = document.createElement("button");
   removeButton.textContent = "Remove";
   removeButton.classList.add("remove");
@@ -166,7 +168,6 @@ form.addEventListener("submit", (e) => {
   author = author.length < 1 ? "unknown" : author;
   year = year.length < 1 ? "unknown" : year;
 
-  console.log(read);
   addBookToLibrary(title, author, year, read);
   listBooks();
   modal.close();
