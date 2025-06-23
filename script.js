@@ -44,33 +44,11 @@ function listBooks() {
     const tr = document.createElement("tr");
 
     keys.forEach((key) => {
-      const td = document.createElement("td");
-      td.textContent = book[key];
-
-      if (key === "read") {
-        addCheckbox(td, book[key], book);
-        td.classList.add("containsCheckbox");
-      }
-
-      tr.appendChild(td);
+      tr.appendChild(populateRow(book, key));
     });
 
     const td = document.createElement("td");
-    const removeButton = document.createElement("button");
-    removeButton.textContent = "Remove";
-    removeButton.classList.add("remove");
-    removeButton.id = book.id;
-
-    removeButton.addEventListener("click", () => {
-      let buttonId = removeButton.id;
-      const book = myLibrary.find((book) => book.id === buttonId);
-      const index = myLibrary.indexOf(book);
-      removeButton.parentNode.remove();
-      myLibrary.splice(index, 1);
-      listBooks();
-    });
-
-    td.appendChild(removeButton);
+    td.appendChild(createRemoveButtons(book));
     tr.appendChild(td);
     tbody.appendChild(tr);
   });
@@ -79,6 +57,36 @@ function listBooks() {
   removeBookButtons.forEach((button) => (button.onclick = () => {}));
 
   main.appendChild(table);
+}
+
+function createRemoveButtons(book) {
+  const removeButton = document.createElement("button");
+  removeButton.textContent = "Remove";
+  removeButton.classList.add("remove");
+  removeButton.id = book.id;
+
+  removeButton.addEventListener("click", () => {
+    let buttonId = removeButton.id;
+    const book = myLibrary.find((book) => book.id === buttonId);
+    const index = myLibrary.indexOf(book);
+    removeButton.parentNode.remove();
+    myLibrary.splice(index, 1);
+    listBooks();
+  });
+
+  return removeButton;
+}
+
+function populateRow(book, key) {
+  const td = document.createElement("td");
+  td.textContent = book[key];
+
+  if (key === "read") {
+    addCheckbox(td, book[key], book);
+    td.classList.add("containsCheckbox");
+  }
+
+  return td;
 }
 
 function addCheckbox(td, read, book) {
