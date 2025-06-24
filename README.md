@@ -1,7 +1,27 @@
-# odin-library
+# 📚 Odin Library
+A minimalistic virtual bookshelf built as part of The Odin Project's JavaScript Library exercise.
 
-A library made for [The Odin Project](https://www.theodinproject.com)'s [Library](https://www.theodinproject.com/lessons/node-path-javascript-library) project.
+## ✨ Features
+Add new books using a modal form
 
-It features a list of books, that can be removed, added, and marked as read.
+Remove books from the list
 
-The table is completely created using DOM manipulation based on an array of Book objects.
+Toggle read/unread status via a checkbox
+
+All books are stored in an array and rendered dynamically with vanilla JavaScript
+
+## 🧰 Technologies Used
+HTML5
+
+CSS3 (Flexbox & Grid layout)
+
+JavaScript (DOM manipulation, object constructors)
+
+## 📐 Project Purpose
+This app was built to reinforce JavaScript fundamentals, especially:
+
+Object constructors and array manipulation
+
+Dynamic DOM updates
+
+Event-driven programming
