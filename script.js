@@ -36,8 +36,7 @@ function listBooks() {
   }
 
   // Populates the head of the table without including the book id
-  let keys = Object.keys(myLibrary[0]);
-  keys.pop();
+  let keys = Object.keys(myLibrary[0]).filter((k) => k != "id");
   addTableHeader(thead, keys);
 
   // Each iteraction creates a table row
@@ -55,9 +54,6 @@ function listBooks() {
     tbody.appendChild(tr);
   });
 
-  let removeBookButtons = document.querySelectorAll(".remove");
-  removeBookButtons.forEach((button) => (button.onclick = () => {}));
-
   main.appendChild(table);
 }
 
@@ -71,7 +67,6 @@ function createRemoveButton(book) {
     let buttonId = removeButton.id;
     const book = myLibrary.find((book) => book.id === buttonId);
     const index = myLibrary.indexOf(book);
-    removeButton.parentNode.remove();
     myLibrary.splice(index, 1);
     listBooks();
   });
@@ -131,21 +126,18 @@ addBookToLibrary("O Idiota", "Fiódor Dostoiévski", 1869);
 
 listBooks();
 
-// Buttons related code
 const openModal = document.querySelector("[data-open-modal]");
-const closeModal = document.querySelector("[data-close-modal]");
-const modal = document.querySelector("[data-model]");
-const form = document.querySelector("form");
-
 openModal.addEventListener("click", () => {
   modal.showModal();
 });
 
+const closeModal = document.querySelector("[data-close-modal]");
 closeModal.addEventListener("click", () => {
   modal.close();
 });
 
 // Allows closing the modal by clicking outside of it
+const modal = document.querySelector("[data-model]");
 modal.addEventListener("click", (e) => {
   const dialogDimensions = modal.getBoundingClientRect();
   if (
@@ -158,6 +150,7 @@ modal.addEventListener("click", (e) => {
   }
 });
 
+const form = document.querySelector("form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   let title = document.querySelector("input[name=title]").value;
